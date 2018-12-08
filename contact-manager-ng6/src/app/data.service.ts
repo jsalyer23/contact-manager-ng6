@@ -13,8 +13,6 @@ export class DataService {
   }
 
   getUser(userId: number) {
-
-
     return this.http.get(`https://jsonplaceholder.typicode.com/users/${userId}`);
   }
 
