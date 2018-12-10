@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
+import { Post } from './post';
 import { trigger, style, transition,
          animate, keyframes, query, stagger } from '@angular/animations';
 
@@ -34,7 +35,7 @@ import { trigger, style, transition,
 })
 export class PostsComponent implements OnInit {
 
-  private posts: Object;
+  private posts: Post;
 
   constructor(private data: DataService) { }
 
