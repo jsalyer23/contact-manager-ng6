@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
+import { Comment } from './comment';
 import { Observable } from 'rxjs';
-import { Post } from './post';
+import { DataService } from '../data.service';
+import { ActivatedRoute } from '@angular/router';
 import { trigger, style, transition,
          animate, keyframes, query, stagger } from '@angular/animations';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss'],
+  selector: 'app-comments',
+  templateUrl: './comments.component.html',
+  styleUrls: ['./comments.component.scss'],
   animations: [
     trigger('listStagger', [
       transition('* <=> *', [
@@ -33,14 +34,17 @@ import { trigger, style, transition,
     ])
   ]
 })
-export class PostsComponent implements OnInit {
+export class CommentsComponent implements OnInit {
 
-  private posts: Post;
+  private comments: [Comment];
+  private postId: number;
 
-  constructor(private data: DataService) { }
+  constructor(private dataService: DataService, private route: ActivatedRoute) {
+    this.route.params.subscribe((params) => { if (params.id) { this.postId = params.id; } });
+  }
 
   ngOnInit() {
-    this.data.getPosts().subscribe((data) => { if (data) this.posts = data; });
+    this.dataService.getComments(this.postId).subscribe((result) => { if (result) { this.comments = result; }});
   }
 
 }

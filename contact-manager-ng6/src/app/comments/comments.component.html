@@ -1,0 +1,12 @@
+<h1>Comments</h1>
+
+<ul class="comment-list" [@listStagger]="comment">
+  <li class="comment-card" *ngFor="let comment of comments">
+    <a>{{comment.name}}</a>
+
+    <ul>
+      <li><a href="mailto:{{comment.email}}">{{comment.email}}</a></li>
+      <li>{{comment.body}}</li>
+    </ul>
+  </li>
+</ul>
