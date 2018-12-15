@@ -11,6 +11,8 @@ import { DetailsComponent } from './details/details.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommentsComponent } from './comments/comments.component';
+import { LoginComponent } from './login/login.component';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CommentsComponent } from './comments/comments.component';
     PostsComponent,
     UsersComponent,
     DetailsComponent,
-    CommentsComponent
+    CommentsComponent,
+    LoginComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

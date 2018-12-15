@@ -1,0 +1,11 @@
+<p>
+  login works!
+</p>
+
+<input type="email" #email>
+<input type="password" #password (keyup.enter)="loginUser(email.value, password.value)">
+
+
+<button (click)="loginUser(email.value, password.value)">Login</button>
+
+<div>{{user.email}} | {{user.password}}</div>
