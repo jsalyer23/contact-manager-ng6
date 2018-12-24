@@ -1,11 +1,31 @@
-<p>
-  login works!
-</p>
+<mat-card class="login-form">
+  <mat-card-content>
+      <mat-form-field appearance="legacy">
+        <input matInput required placeholder="email"
+          [formControl]="email"
+          (keyup.enter)="loginUser()">
+        <mat-error *ngIf="!email.value">Please provide your email</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="legacy">
+        <input matInput required
+          placeholder="password" 
+          [formControl]="password"
+          (keyup.enter)="loginUser()">
+        <mat-error *ngIf="!password.value">Please provide your password</mat-error>
+      </mat-form-field>
+      
+      <mat-card-actions>
+        <button mat-raised-button (click)="loginUser()">Login</button>
+      </mat-card-actions>
+  </mat-card-content>
+</mat-card>
 
-<input type="email" #email>
-<input type="password" #password (keyup.enter)="loginUser(email.value, password.value)">
+<!-- TODO Handle error messages better, maybe move them to a service -->
 
-
-<button (click)="loginUser(email.value, password.value)">Login</button>
-
-<div>{{user.email}} | {{user.password}}</div>
+<!-- Testing only -->
+<div *ngIf="currentUser">
+  <h1>{{currentUser.email}}</h1>
+  <h4>{{currentUser.name}}</h4>
+  <h5>{{currentUser.nickname}}</h5>
+</div>
