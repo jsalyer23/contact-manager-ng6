@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Observable } from 'rxjs';
-import { Post } from './post';
+// import { Post } from './post';
 import { trigger, style, transition,
          animate, keyframes, query, stagger } from '@angular/animations';
 
@@ -35,7 +35,8 @@ import { trigger, style, transition,
 })
 export class PostsComponent implements OnInit {
 
-  private posts: Post;
+  // private posts: Post; Need to fix this once the data is coming from the backend
+  private posts: Object;
 
   constructor(private data: DataService) { }
 

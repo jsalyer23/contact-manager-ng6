@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Comment } from './comment';
+// import { Comment } from './comment';
 import { Observable } from 'rxjs';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
@@ -36,7 +36,8 @@ import { trigger, style, transition,
 })
 export class CommentsComponent implements OnInit {
 
-  private comments: [Comment];
+  // private comments: [Comment];
+  private comments: Object;
   private postId: number;
 
   constructor(private dataService: DataService, private route: ActivatedRoute) {
