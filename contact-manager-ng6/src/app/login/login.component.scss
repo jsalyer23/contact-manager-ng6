@@ -1,11 +1,9 @@
 .login-form {
     width: 30%;
-
     mat-form-field {
         display: flex;
-    flex-direction: column;
+        flex-direction: column;
     }
-
     mat-card-actions {
         display: flex;
         justify-content: center;
