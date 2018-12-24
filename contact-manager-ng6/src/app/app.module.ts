@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularTokenModule } from 'angular-token';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
@@ -13,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommentsComponent } from './comments/comments.component';
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './alert/alert.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,8 +32,9 @@ import { AlertComponent } from './alert/alert.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AngularTokenModule.forRoot(environment.token_auth_config),
   ],
-  providers: [],
+  providers: [AngularTokenModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
