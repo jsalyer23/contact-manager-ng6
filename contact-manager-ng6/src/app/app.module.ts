@@ -15,6 +15,10 @@ import { CommentsComponent } from './comments/comments.component';
 import { LoginComponent } from './login/login.component';
 import { AlertComponent } from './alert/alert.component';
 import { environment } from '../environments/environment';
+import { MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+
+// Material Design Modules
 
 @NgModule({
   declarations: [
@@ -32,6 +36,11 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
     AngularTokenModule.forRoot(environment.token_auth_config),
   ],
   providers: [AngularTokenModule],
