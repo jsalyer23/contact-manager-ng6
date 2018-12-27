@@ -17,6 +17,7 @@ import { AlertComponent } from './alert/alert.component';
 import { environment } from '../environments/environment';
 import { MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from './services/auth.service';
 
 // Material Design Modules
 
@@ -43,7 +44,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     AngularTokenModule.forRoot(environment.token_auth_config),
   ],
-  providers: [AngularTokenModule],
+  providers: [AngularTokenModule, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
