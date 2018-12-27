@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       passwordConfirmation: this.passwordConfirmation.value
     };
     // This setting of the current user will probably go away
+    // TODO: This is kinda dirty, should clean this up
     this.currentUser = (this.newUser) ? 
           this.authService.registerUser(loginInfo) : this.authService.getUser(loginInfo);
   }
