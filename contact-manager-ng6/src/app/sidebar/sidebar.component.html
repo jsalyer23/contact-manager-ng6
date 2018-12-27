@@ -1,15 +1,28 @@
 <nav>
   <ul>
-    <li>
+    <!-- Login -->
+    <li *ngIf="!(authService.userSignedIn$ | async)">
       <a routerLink="login" [class.activated]="currentUrl == '/login'">
         <i class="material-icons">account_box</i>
+        <!-- TODO: Should probably show something like "Login" button -->
       </a>
     </li>
+    <!-- Log Out -->
+    <li *ngIf="(authService.userSignedIn$ | async)">
+      <a (click)="logOut()">Log Out</a>
+    </li>
+    <!-- Profile -->
+    <li *ngIf="(authService.userSignedIn$ | async)">
+      <a routerLink="/details/{{user.id}}" [class.activated]="currentUrl == '/details/{{user.id}}'">Profile</a>
+        <i class="material-icons">settings</i>
+    </li>
+    <!-- Home -->
     <li>
       <a routerLink="" [class.activated]="currentUrl == '/'">
         <i class="material-icons">supervised_user_circle</i>
       </a>
     </li>
+    <!-- Posts -->
     <li>
       <a routerLink="posts" [class.activated]="currentUrl == '/posts'">
         <i class="material-icons">message</i>
