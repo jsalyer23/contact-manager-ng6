@@ -14,8 +14,8 @@ export class AuthService {
     this.validateToken();
   }
 
-  public getUser(loginInfo: RegisterData) {
-    return this.tokenService.signIn(loginInfo).subscribe(
+  public getUser(loginInfo: RegisterData): Observable<Response> {
+    return this.tokenService.signIn(loginInfo).map(
       (response) => {
         this.userSignedIn$.next(true);
         return response.body.data,
@@ -23,9 +23,9 @@ export class AuthService {
     });
   }
 
-  public registerUser(loginInfo: RegisterData) {
+  public registerUser(loginInfo: RegisterData): Observable<Response> {
     if (!loginInfo.passwordConfirmation) { return; } // Probably need to do this differently
-    return this.tokenService.registerAccount(loginInfo).subscribe(
+    return this.tokenService.registerAccount(loginInfo).map(
       (response) => {
         this.userSignedIn$.next(true);
         return response.body.data,
@@ -33,8 +33,8 @@ export class AuthService {
     });
   }
 
-  public logOutUser() {
-    return this.tokenService.signOut().subscribe(
+  public logOutUser(): Observable<Response> {
+    return this.tokenService.signOut().map(
       (response) => {
         this.userSignedIn$.next(false);
         console.log('User Logged Out...');
