@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class SidebarComponent implements OnInit {
 
+  public user: Object;
   private currentUrl: String;
 
   constructor(private router: Router, public authService: AuthService) {
@@ -17,13 +18,14 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.currentUrl);
+    console.log(this.currentUrl); // TODO: This needs cleaned up
+    // this.user = this.authService.currentUser;
   }
 
-  /**
+  /** 
    * Logs out current user and navigates back to Home view
    */
-  public logOutUser() {
+  public logOut() {
     this.authService.logOutUser().subscribe(() => { this.router.navigate(['/'])});
   }
 

@@ -9,11 +9,13 @@
     </li>
     <!-- Log Out -->
     <li *ngIf="(authService.userSignedIn$ | async)">
-      <a (click)="logOut()">Log Out</a>
+      <a (click)="logOut()">
+        <i class="material-icons">exit_to_app</i>
+      </a>
     </li>
     <!-- Profile -->
     <li *ngIf="(authService.userSignedIn$ | async)">
-      <a routerLink="/details/{{user.id}}" [class.activated]="currentUrl == '/details/{{user.id}}'">Profile</a>
+      <a *ngIf="user" routerLink="/details/{{user.id}}" >Profile</a>
         <i class="material-icons">settings</i>
     </li>
     <!-- Home -->
