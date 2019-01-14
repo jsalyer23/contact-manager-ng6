@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularTokenService, RegisterData } from 'angular-token';
 import { Subject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,45 +9,49 @@ import { Subject, Observable } from 'rxjs';
 export class AuthService {
 
   public userSignedIn$: Subject<boolean> = new Subject();
+  // public currentUser: Object;
   private result: Response;
 
   constructor(private tokenService: AngularTokenService) {
     this.validateToken();
   }
-
-  public getUser(loginInfo: RegisterData): Observable<Response> {
-    return this.tokenService.signIn(loginInfo).map(
+  // : Observable<Response>
+  public getUser(loginInfo: RegisterData) {
+    console.log('Getting Exsisting User');
+    return this.tokenService.signIn(loginInfo).pipe(map(
       (response) => {
         this.userSignedIn$.next(true);
-        return response.body.data,
-      (error) => { console.error(error); }
-    });
+        return response;
+      }));
   }
 
-  public registerUser(loginInfo: RegisterData): Observable<Response> {
+  public registerUser(loginInfo: RegisterData) {
     if (!loginInfo.passwordConfirmation) { return; } // Probably need to do this differently
-    return this.tokenService.registerAccount(loginInfo).map(
+    console.log('Registering New User');
+    
+    return this.tokenService.registerAccount(loginInfo).pipe(map(
       (response) => {
         this.userSignedIn$.next(true);
-        return response.body.data,
-      (error) => { console.error(error); }
-    });
+        console.log('Within registerUser() AuthService');
+        return response;
+      }));
   }
 
-  public logOutUser(): Observable<Response> {
-    return this.tokenService.signOut().map(
+  public logOutUser() {
+    return this.tokenService.signOut().pipe(map(
       (response) => {
         this.userSignedIn$.next(false);
         console.log('User Logged Out...');
-        return response.body.data,
-      (error) => { console.error(error); }
-    });
+        console.log(response);
+        
+        return response;
+    }));
   }
 
   public validateToken() {
     return this.tokenService.validateToken().subscribe(
       (response) => {
-        (response.status == 200) ? this.userSignedIn$.next(response.json().success) : this.userSignedIn.next(false);
+        (response.status == 200) ? this.userSignedIn$.next(response.json().success) : this.userSignedIn$.next(false);
       }
     );
   }
