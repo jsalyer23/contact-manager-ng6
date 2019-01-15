@@ -13,12 +13,12 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   currentUser: any;
-  private newUser: boolean;
   // Form Inputs
   public email: FormControl = new FormControl('', [Validators.required, Validators.email]);
   public password: FormControl = new FormControl('', [Validators.required]);
   public passwordConfirmation: FormControl = new FormControl('', [Validators.required])
-
+  private newUser: boolean;
+  
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {}
