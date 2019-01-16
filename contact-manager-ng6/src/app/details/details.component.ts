@@ -14,12 +14,17 @@ export class DetailsComponent implements OnInit {
   private user: Object;
   private userId: number;
 
-  constructor(private data: DataService, private route: ActivatedRoute) {
+  constructor(private dataService: DataService, private route: ActivatedRoute) {
     this.route.params.subscribe((params) => { this.userId = params.id; });
   }
 
   ngOnInit() {
-    this.data.getUser(this.userId).subscribe((data) => { this.user = data; });
+    // Use this for admin rather than default users
+    // this.dataService.getUser(this.userId).subscribe(data => this.user = data, err => console.error(err));
+  }
+
+  logOut() {
+    // Don't need this yet but may in the future if there is other actions needed before redirecting
   }
 
 }
