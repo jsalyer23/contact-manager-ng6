@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
+import { ProfileComponent } from './profile/profile.component';
 
 // Material Design Modules
 
@@ -30,7 +31,8 @@ import { AuthService } from './services/auth.service';
     DetailsComponent,
     CommentsComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
