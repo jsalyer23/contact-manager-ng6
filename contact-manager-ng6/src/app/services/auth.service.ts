@@ -69,6 +69,8 @@ export class AuthService {
    * @memberof AuthService
    */
   public validateToken() {
+    // TODO: This shouldn't be the fix for this issue
+    if (!this.tokenService.currentUserData) { return; }
     return this.tokenService.validateToken().subscribe(
       (response) => {
         (response.status == 200) ? this.userSignedIn$.next(response.json().success) : this.userSignedIn$.next(false);
