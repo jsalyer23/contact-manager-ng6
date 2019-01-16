@@ -7,5 +7,8 @@ import { AngularTokenService } from 'angular-token';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'contact-manager-ng6';
+  
+  constructor(private tokenService: AngularTokenService) {
+    this.tokenService.validateToken();
+  }
 }
