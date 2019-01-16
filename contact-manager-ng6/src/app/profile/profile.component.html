@@ -1,3 +1,6 @@
 <mat-card class="profile-card" *ngIf="user">
-  <mat-card-title>{{user.nickname}}</mat-card-title>
+  <mat-card-title>{{user.nickname || user.name || user.email}}</mat-card-title>
+  <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+  <img mat-card-image *ngIf="user.image" src="{{user.image"/>
+  <mat-card-content>Bdofijeofijeofejofejfoeijfeoijfeoifjeofijeofi</mat-card-content>
 </mat-card>
