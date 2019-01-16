@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     
     private onLogin(response: any) {
       this.currentUser = response.body.data || response;
-      this.router.navigate([`/details/${this.currentUser.id}`]);
+      this.router.navigate([`/profile/${this.currentUser.id}`]);
     }
 
     private onError(error: any) {
