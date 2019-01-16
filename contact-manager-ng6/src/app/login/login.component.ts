@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
     
     private onLogin(response: any) {
       this.currentUser = response.body.data || response;
+      localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
       this.router.navigate([`/profile/${this.currentUser.id}`]);
     }
 

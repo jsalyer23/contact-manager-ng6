@@ -58,6 +58,7 @@ export class AuthService {
     return this.tokenService.signOut().pipe(map(
       (response) => {
         this.userSignedIn$.next(false);
+        localStorage.removeItem('currentUser');
         return response;
     }));
   }
@@ -70,7 +71,7 @@ export class AuthService {
    */
   public validateToken() {
     // TODO: This shouldn't be the fix for this issue
-    if (!this.tokenService.currentUserData) { return; }
+    if (!this.tokenService.currentUserData || localStorage.currentUser) { return; }
     return this.tokenService.validateToken().subscribe(
       (response) => {
         (response.status == 200) ? this.userSignedIn$.next(response.json().success) : this.userSignedIn$.next(false);
