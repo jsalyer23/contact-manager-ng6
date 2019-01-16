@@ -20,7 +20,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     // Use this for admin rather than default users
-    // this.dataService.getUser(this.userId).subscribe(data => this.user = data, err => console.error(err));
+    this.dataService.getUser(this.userId).subscribe(data => this.user = data, err => console.error(err));
   }
 
   logOut() {

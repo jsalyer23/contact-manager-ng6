@@ -1,10 +1,17 @@
 <nav>
   <ul>
+    <!-- Home -->
+    <li>
+      <a routerLink="" [class.activated]="currentUrl == '/'">
+        <i class="material-icons">supervised_user_circle</i>
+      </a>
+    </li>
     <!-- Login -->
     <li *ngIf="!(authService.userSignedIn$ | async)">
       <a routerLink="login" [class.activated]="currentUrl == '/login'">
+        <!-- This should be changed once there is an existing user setup -->
+        <!-- <img *ngIf="user.image" class="profile-image" src="{{USER IMAGE URL}}"/> -->
         <i class="material-icons">account_box</i>
-        <!-- TODO: Should probably show something like "Login" button -->
       </a>
     </li>
     <!-- Log Out -->
@@ -15,14 +22,8 @@
     </li>
     <!-- Profile -->
     <li *ngIf="(authService.userSignedIn$ | async)">
-      <a *ngIf="user" routerLink="/details/{{user.id}}" >Profile</a>
+      <a *ngIf="user" routerLink="/profile" >Profile</a>
         <i class="material-icons">settings</i>
-    </li>
-    <!-- Home -->
-    <li>
-      <a routerLink="" [class.activated]="currentUrl == '/'">
-        <i class="material-icons">supervised_user_circle</i>
-      </a>
     </li>
     <!-- Posts -->
     <li>
