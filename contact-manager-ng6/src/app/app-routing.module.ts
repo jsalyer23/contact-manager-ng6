@@ -7,6 +7,7 @@ import { DetailsComponent } from './details/details.component';
 import { CommentsComponent } from './comments/comments.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
   {
     path: 'posts/:id/comments',
     component: CommentsComponent,
-    children: []
+    children: [],
+    // canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -37,7 +39,8 @@ const routes: Routes = [
   {
     path: 'profile/:id',
     component: ProfileComponent,
-    children: []
+    children: [],
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -19,6 +19,7 @@ import { MatCardModule, MatButtonModule, MatFormFieldModule, MatInputModule } fr
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
 
 // Material Design Modules
 
@@ -46,7 +47,7 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     AngularTokenModule.forRoot(environment.token_auth_config),
   ],
-  providers: [AngularTokenModule, AuthService],
+  providers: [AngularTokenModule, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
