@@ -5,6 +5,9 @@ import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
 import { DetailsComponent } from './details/details.component';
 import { CommentsComponent } from './comments/comments.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +16,7 @@ const routes: Routes = [
     children: []
   },
   {
-    path: 'details/:id',
+    path: 'details/:id', // TODO: This should only be for admin users or just removed completely
     component: DetailsComponent,
     children: []
   },
@@ -25,7 +28,19 @@ const routes: Routes = [
   {
     path: 'posts/:id/comments',
     component: CommentsComponent,
+    children: [],
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
     children: []
+  },
+  {
+    path: 'profile/:id',
+    component: ProfileComponent,
+    children: [],
+    canActivate: [AuthGuard]
   }
 ];
 

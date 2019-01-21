@@ -1,0 +1,40 @@
+<mat-card class="login-form">
+  <mat-card-content>
+      <mat-form-field appearance="legacy">
+        <input matInput required placeholder="Email"
+          [formControl]="email"
+          (keyup.enter)="loginUser()">
+        <mat-error *ngIf="!email.value">Please provide your email</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field appearance="legacy">
+        <input matInput required
+          placeholder="Password" 
+          [formControl]="password"
+          (keyup.enter)="loginUser()">
+        <mat-error *ngIf="!password.value">Please provide your password</mat-error>
+      </mat-form-field>
+
+      <mat-form-field *ngIf="newUser" appearance="legacy">
+        <input matInput required placeholder="Confirm Password"
+        [formControl]="passwordConfirmation"
+        (keyup.enter)="loginUser()">
+        <mat-error *ngIf="!password.value">Please provide your password</mat-error>
+      </mat-form-field>
+      
+      <mat-card-actions>
+        <button mat-raised-button (click)="loginUser()">{{(newUser) ? 'Sign Up' : 'Login'}}</button>
+        <button mat-button *ngIf="!newUser" (click)="newUser = true">Sign Up</button>
+        <button mat-button *ngIf="newUser" (click)="newUser = false">Back</button>
+      </mat-card-actions>
+  </mat-card-content>
+</mat-card>
+
+<!-- TODO Handle already registered users... maybe should come from the backend -->
+
+<!-- Testing only -->
+<div *ngIf="currentUser">
+  <h1>{{currentUser.email}}</h1>
+  <h4>{{currentUser.name}}</h4>
+  <h5>{{currentUser.nickname}}</h5>
+</div>
